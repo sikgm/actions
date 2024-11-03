@@ -1,0 +1,17 @@
+name: echo
+
+on:
+  pull_request_review:
+    branches:
+      - master
+      - develop
+    types: [submitted]
+
+  jobs:
+    echo:
+      if: github.event.review.state == 'approved'
+      timeout-minutes: 2
+      runs-on: ubuntu-latest
+      steps:
+        - name: echo
+          run: echo "Hello, world!"
