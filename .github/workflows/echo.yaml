@@ -21,3 +21,12 @@ jobs:
     steps:
       - name: echo
         run: echo "Hello, world!"
+  
+  cat:
+    timeout-minutes: 2
+    runs-on: ubuntu-latest
+    steps:
+      - name: cat
+        run: cat ${env.event}
+        env: 
+          event: ${{ toJson(github.event) }}
